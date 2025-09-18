@@ -28,7 +28,7 @@ export default [
   },
   {
     rules: {
-      'prettier/prettier': 'error',
+      'prettier/prettier': 'off',
       'import/no-anonymous-default-export': 'off',
     },
   },
