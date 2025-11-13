@@ -1,7 +1,13 @@
+"use client";
+
+import { Circle } from "@/components/circle";
+import { Square } from "@/components/square";
+
 export default function Home() {
   return (
     <div className="min-h-screen">
-      <h1>Hello world</h1>
+      <Circle />
+      <Square />
     </div>
   );
 }
