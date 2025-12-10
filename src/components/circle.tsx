@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { ScreenWrapper } from "./common/screen-wrapper";
 import { motion } from "motion/react";
