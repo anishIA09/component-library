@@ -1,7 +1,8 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import { ScreenWrapper } from "../common/screen-wrapper";
 import { cn } from "@/lib/utils";
-import { a } from "motion/react-client";
 
 export const Senco = () => {
   return (
@@ -238,6 +239,60 @@ const GoogleMap = () => {
 };
 
 const BookAppoinmentForm = () => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    phoneNumber: "",
+    email: "",
+  });
+  const [validationErrors, setValidationErrors] = useState({
+    fullName: "",
+    phoneNumber: "",
+    email: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+    setValidationErrors((prevValidationErrors) => ({
+      ...prevValidationErrors,
+      [name]: "",
+    }));
+  };
+
+  const validateForm = () => {
+    const errors = {};
+
+    if (!formData.fullName) {
+      errors.fullName = "Full name can't be empty";
+    }
+
+    if (!formData.phoneNumber) {
+      errors.phoneNumber = "Phone number can't be empty";
+    }
+
+    if (!formData.email) {
+      errors.email = "Email can't be empty.";
+    }
+
+    return errors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const errors = validateForm();
+
+    if (Object.values(errors).length) {
+      setValidationErrors((prevValidationErrors) => ({
+        ...prevValidationErrors,
+        ...errors,
+      }));
+      return;
+    }
+
+    console.log("Submit kar");
+  };
+
   return (
     <Card className="p-0 overflow-hidden">
       <CardHeader className="p-4">
@@ -247,17 +302,51 @@ const BookAppoinmentForm = () => {
         <form className="flex flex-col gap-4">
           <LabelInputContainer>
             <Label htmlFor="fullName">Full Name</Label>
-            <Input id="fullName" placeholder="Enter full name" />
+            <Input
+              id="fullName"
+              placeholder="Enter full name"
+              name={"fullName"}
+              value={formData.fullName}
+              onChange={handleInputChange}
+            />
+            {validationErrors.fullName && (
+              <p className="text-sm text-red-500">
+                {validationErrors.fullName}
+              </p>
+            )}
           </LabelInputContainer>
           <LabelInputContainer>
             <Label htmlFor="phone-number">Phone Number</Label>
-            <Input id="phone-number" placeholder="Enter phone number" />
+            <Input
+              id="phone-number"
+              placeholder="Enter phone number"
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handleInputChange}
+            />
+            {validationErrors.phoneNumber && (
+              <p className="text-sm text-red-500">
+                {validationErrors.phoneNumber}
+              </p>
+            )}
           </LabelInputContainer>
           <LabelInputContainer>
             <Label htmlFor="email">Email</Label>
-            <Input id="email" placeholder="Enter email address" />
+            <Input
+              id="email"
+              placeholder="Enter email address"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+            />
+            {validationErrors.email && (
+              <p className="text-sm text-red-500">{validationErrors.email}</p>
+            )}
           </LabelInputContainer>
-          <button className="h-8 rounded-md bg-[#EA3A3E] text-white font-semibold text-sm px-3 py-2 flex items-center justify-center">
+          <button
+            onClick={handleSubmit}
+            className="h-8 rounded-md bg-[#EA3A3E] text-white font-semibold text-sm px-3 py-2 flex items-center justify-center"
+          >
             Book Appointment
           </button>
         </form>
