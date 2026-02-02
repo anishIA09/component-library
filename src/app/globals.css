@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@theme inline {
+  --animate-rotate-x: rotateX 4s linear infinite;
+}
+
+@keyframes rotateX {
+  to {
+    transform: rotateZ(360deg);
+  }
+}

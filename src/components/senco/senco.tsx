@@ -75,7 +75,7 @@ const PAYMENT_OPTIONS = [
   "Senco Gift Card",
 ];
 
-const LANGUAGES = ["Marathi", "Hindi", "English", "Bengali", "Gujrati"];
+const LANGUAGES = ["Marathi", "Hindi", "English", "Bengali", "Gujrati"]; // TODO: add line after each language
 
 const RightCard = () => {
   return (
@@ -168,7 +168,7 @@ const CTAButton = ({
     <button
       className={cn(
         "h-8 rounded-md px-4 py-2 border-2 border-[#ea3a3e] text-sm font-semibold flex items-center justify-center",
-        className
+        className,
       )}
       {...props}
     >
@@ -188,7 +188,7 @@ const Card = ({
     <div
       className={cn(
         "w-full rounded-xl bg-white text-black p-4 flex flex-col shadow-md border border-neutral-100",
-        className
+        className,
       )}
     >
       {children}
@@ -364,7 +364,7 @@ const Input = ({ className, ...props }: InputProps) => {
     <input
       className={cn(
         "w-full h-8 rounded-md text-sm placeholder:text-neutral-500 border border-[#EA3A3E] px-2 outline-none focus-visible:ring-2 focus-visible:ring-red-300",
-        className
+        className,
       )}
       {...props}
     />
