@@ -1,11 +1,17 @@
 @import "tailwindcss";
 
 @theme inline {
-  --animate-rotate-x: rotateX 4s linear infinite;
+  --animate-orbit-rotation: orbit-rotation 4s linear infinite
+    var(--object-delay);
 }
 
-@keyframes rotateX {
-  to {
-    transform: rotateZ(360deg);
+@keyframes orbit-rotation {
+  0% {
+    transform: rotate(0deg) translate(var(--translate-position)) rotate(-0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translate(var(--translate-position))
+      rotate(-360deg);
   }
 }
