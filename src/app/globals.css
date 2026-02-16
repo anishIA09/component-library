@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme inline {
-  --animate-orbit-rotation: orbit-rotation 4s linear infinite
+  --animate-orbit-rotation: orbit-rotation 10s linear infinite
     var(--object-delay);
 }
 

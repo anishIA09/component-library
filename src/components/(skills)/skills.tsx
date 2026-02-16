@@ -7,7 +7,7 @@ import { motion } from "motion/react";
 
 export const Skills = () => {
   return (
-    <div className="mt-16 h-[428px] perspective-distant flex items-center justify-center">
+    <div className="mt-16 h-[286px] perspective-distant flex items-center justify-center overflow-hidden bg-white border border-neutral-200 rounded-lg">
       <div className="size-full flex items-center justify-center relative rotate-x-20 rotate-y-20 -rotate-z-20">
         <Orbit delay={0.2} className="z-10 shadow-md">
           <div className="size-14 rounded-md flex items-center justify-center bg-white border-neutral-200 shadow-sm absolute">
